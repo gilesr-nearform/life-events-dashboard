@@ -1,40 +1,39 @@
-# Dashboard prototype — conversation-first
+# Life Events Dashboard
 
-Pre-alpha prototype of the OGCIO Life Events dashboard (Building Block 7),
-built to **rif on the BMAD Crazy 8 brainstorm output** and stress-test one
+Pre-alpha prototype of the OGCIO Life Events dashboard (Building Block 7).
+Built to **rif on the BMAD Crazy 8 brainstorm output** and stress-test one
 post-brainstorm idea: **anchor every government message to the application
 it's about**.
 
-This sits alongside `../dashboard-mvp/` (Claude's earlier prototype) as a
-deliberate alternative — same context, different choices. Use both to
-compare and pick the directions worth keeping.
+Repo: <https://github.com/gilesr-nearform/life-events-dashboard>
 
-## Run
+## Preview
 
-No install. No build. Open `index.html` directly, or:
+Zero build, three files, no `npm`. Open `index.html` directly, or serve it:
 
 ```bash
 python3 -m http.server 8000
-# open http://localhost:8000
 ```
 
-That's it. Three files: `index.html`, `styles.css`, `app.js`.
+Then open **<http://localhost:8000>** in your browser.
 
-## What's different from `dashboard-mvp/`
+> **Hosted preview** is not set up yet — the repo is private, which rules
+> out free GitHub Pages. Cloudflare Pages or Netlify both deploy private
+> repos for free (~2 min to wire up). Ask if you want one.
 
-| Axis | `dashboard-mvp/` (Claude) | `dashboard-prototype/` (this) |
-|---|---|---|
-| Build | `npm install` + `sass` compiles `@ogcio/ogcio-ds` | None. Open the file. |
-| Design system | `@ogcio/ogcio-ds` (the project context flags this as **superseded**) | Documented gov.ie tokens (Lato, `#006658`) used directly via CSS custom properties |
-| Markup | Hand-written static HTML for every message | Single `state.applications` JS array; HTML is rendered from data |
-| Submissions | "Recent submissions" — flat list, one latest message per card, read-only | "Your applications & conversations" — threaded, multi-department, with replies |
-| Cross-department | Not modelled | First-class. The Pregnancy registration thread shows an **HSE** appointment + a **DSP** cross-link about Maternity Benefit, side by side, on the same thread |
-| Reply | None | Inline composer that mutates state and re-renders |
-| Filters | None | All / Awaiting you / Active / Done — counts roll up from data |
-| Unread | One global tag | Per-message · per-thread · header roll-up, all derived |
-| Quiet Mode | Header toggle | Not in this iteration (see "Deferred" below) |
-| Bilingual | `data-en` / `data-ga` toggle | Same convention preserved |
-| Component naming | `govie-*` (DS) + `app-*` (overrides) | `dash-*`-style flat names with explicit BEM-ish blocks |
+## Design choices worth knowing
+
+| Choice | What it means here |
+|---|---|
+| Build | None. Open the file. |
+| Design system | Documented gov.ie tokens (Lato, `#006658`) referenced directly as `--govie-*` CSS custom properties. No npm dependency on the deprecated `ogcio-ds` SCSS distribution. |
+| Markup | Single `state.applications` JS array; HTML is rendered from data, not hand-written per item. |
+| Submissions | "Your applications & conversations" — threaded, multi-department, with replies. (Not a flat departmental inbox.) |
+| Cross-department | First-class. The Pregnancy registration thread shows an **HSE** appointment + a **DSP** cross-link about Maternity Benefit, side by side, on the same thread. |
+| Reply | Inline composer that mutates state and re-renders. |
+| Filters | All / Awaiting you / Active / Done — counts roll up from data. |
+| Unread | Per-message · per-thread · header roll-up, all derived from the same `unread` flag. |
+| Bilingual | `[data-en]` / `[data-ga]` toggle; gov.ie convention preserved. |
 
 ## The new feature: messages grouped by application
 
@@ -148,15 +147,13 @@ client — the client should switch to plain text + structured CTAs.
 
 ## Suggested next moves
 
-1. **Show both prototypes back-to-back** (this one + `dashboard-mvp/`) and
-   capture which idioms each stakeholder gravitates to. The split between
-   "informational dashboard" (mvp) and "conversational dashboard" (this)
-   is real and worth a directional decision before more build effort.
-2. **Wire one thread to a live MessagingIE channel** as a thin slice. The
+1. **Wire one thread to a live MessagingIE channel** as a thin slice. The
    data shape is already an honest match to "an application + its
    messages from any source"; swapping the seed array for a fetch is a
    morning's work.
-3. **Spec the `cross-link` message kind upstream**. It's the most
+2. **Spec the `cross-link` message kind upstream**. It's the most
    programme-distinctive idea in here and the one that operationalises
    the "Journey, not service" theme. Worth raising as a Design SystemIE
    pattern candidate.
+3. **Set up a hosted preview** if this needs to be shared without spinning
+   up a server. Cloudflare Pages or Netlify, free for private repos.
