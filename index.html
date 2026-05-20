@@ -146,30 +146,41 @@
 
         <article class="v-card v-card--latest">
           <div class="v-card__row">
-            <span class="v-card__tag v-card__tag--latest">v1 · latest</span>
+            <span class="v-card__tag v-card__tag--latest">v2 · latest</span>
+            <span class="v-card__date">20 May 2026</span>
+          </div>
+          <h3 class="v-card__title"><a href="v2/">Unified application card</a></h3>
+          <p class="v-card__desc">A bounding-box card per application that includes its latest messages. Shows three applications by default with a reveal-more affordance.</p>
+          <ul class="v-card__features">
+            <li>One card per application, with 3 latest messages embedded</li>
+            <li>Card-level &ldquo;View all N messages&rdquo; link</li>
+            <li>&ldquo;Show more applications&rdquo; reveal pattern</li>
+            <li>Single-column reading layout, max content width 960px</li>
+            <li>Inherits v1&rsquo;s tokens, bilingual toggle, and responsive rules</li>
+          </ul>
+          <a href="v2/" class="v-card__open">
+            Open v2
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="v-card">
+          <div class="v-card__row">
+            <span class="v-card__tag">v1</span>
             <span class="v-card__date">20 May 2026</span>
           </div>
           <h3 class="v-card__title"><a href="v1/">Basic build</a></h3>
-          <p class="v-card__desc">Faithful to the <em>basic-dashboard</em> Figma wireframe. Combines the application with the relevant messages, side by side. No extras.</p>
+          <p class="v-card__desc">Faithful to the <em>basic-dashboard</em> Figma wireframe. Application and messages in two columns, side by side. No extras.</p>
           <ul class="v-card__features">
             <li>Two columns: applications + messages</li>
             <li>Cards with title, date, and underlying link</li>
             <li>Bilingual toggle (en-IE / ga)</li>
-            <li>Responsive — stacks under 768px</li>
+            <li>Responsive &mdash; stacks under 768px</li>
           </ul>
           <a href="v1/" class="v-card__open">
             Open v1
             <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-        </article>
-
-        <article class="v-card" aria-disabled="true" style="opacity:0.6;">
-          <div class="v-card__row">
-            <span class="v-card__tag">v2 · next</span>
-            <span class="v-card__date">tbd</span>
-          </div>
-          <h3 class="v-card__title">Coming next</h3>
-          <p class="v-card__desc">Once v1 is signed off, the next iteration will add the first new feature. We&rsquo;ll decide it together based on what you learn from v1.</p>
         </article>
 
       </div>

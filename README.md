@@ -11,8 +11,9 @@ Live: <https://gilesr-nearform.github.io/life-events-dashboard/>
 
 | Version | URL | Status | What it shows |
 |---|---|---|---|
-| **v1** | [`/v1/`](https://gilesr-nearform.github.io/life-events-dashboard/v1/) | latest | Basic build — application + relevant messages, side by side, matching the [Figma `basic-dashboard` wireframe](https://www.figma.com/design/fwveQitr3tB5ZuHuHVh7nv/Life-Events-Portal-%E2%80%94-Citizen-Dashboard--Wireframes-?node-id=99-1197). No extras. |
-| v2 | tbd | planned | First feature on top of v1 (to be decided after v1 review) |
+| **v2** | [`/v2/`](https://gilesr-nearform.github.io/life-events-dashboard/v2/) | latest | Unified application card — one bounding box per application with its 3 latest messages embedded; reveal-more for additional applications. |
+| v1 | [`/v1/`](https://gilesr-nearform.github.io/life-events-dashboard/v1/) | superseded | Basic build — application + relevant messages, side by side, matching the [Figma `basic-dashboard` wireframe](https://www.figma.com/design/fwveQitr3tB5ZuHuHVh7nv/Life-Events-Portal-%E2%80%94-Citizen-Dashboard--Wireframes-?node-id=99-1197). No extras. |
+| v3 | tbd | planned | Next iteration (decided after v2 review) |
 
 ### Archive
 
