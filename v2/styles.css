@@ -207,6 +207,7 @@ html[lang="ga"] [data-ga] { display: inline; }
   background: var(--govie-surface-1);
 }
 .msg {
+  position: relative;
   display: flex; align-items: baseline; justify-content: space-between;
   gap: var(--s-4);
   padding: var(--s-3) var(--s-5);
@@ -228,7 +229,30 @@ html[lang="ga"] [data-ga] { display: inline; }
   font-size: 14px; line-height: 24px;
   flex-shrink: 0;
   white-space: nowrap;
+  display: inline-flex; align-items: center; gap: var(--s-2);
 }
+
+/* Unread indicator: small solid dot in the row's left padding gutter. */
+.msg--unread::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--govie-primary);
+}
+
+/* Attachment glyph (paperclip): inline left of the date. Muted by
+ * default; promotes to primary on row hover for affordance. */
+.msg__attachment {
+  display: inline-flex; align-items: center;
+  color: var(--govie-text-muted);
+  flex-shrink: 0;
+}
+.msg__attachment svg { width: 16px; height: 16px; }
+.msg:hover .msg__attachment { color: var(--govie-primary); }
 
 /* ---------- Card footer (view all link) ---------- */
 .app-card__foot {
