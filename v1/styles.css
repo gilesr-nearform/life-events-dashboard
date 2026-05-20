@@ -1,0 +1,295 @@
+/* v1 — basic build, application + relevant messages
+ * Token-first CSS using documented gov.ie values from ds/govie-ds.mdc
+ * and the design context pulled from the Figma "basic-dashboard" node.
+ */
+
+:root {
+  /* Brand */
+  --govie-primary:          #004d44;
+  --govie-primary-subtle:   #006658;
+  --govie-primary-hover:    #003a33;
+
+  /* Text */
+  --govie-text:             #0b0c0c;
+  --govie-text-muted:       #686d78;
+  --govie-text-inverse:     #ffffff;
+
+  /* Links (convention blue from the wireframe) */
+  --govie-link:             #2c55a2;
+  --govie-link-hover:       #1f3f7a;
+
+  /* Surfaces */
+  --govie-surface-page:     #ffffff;
+  --govie-surface-1:        #f7f7f8;
+  --govie-surface-2:        #e9eaed;
+
+  /* Borders */
+  --govie-border-card:      #d8dadf;
+  --govie-border-focus:     #fd0;
+
+  /* Type */
+  --font-body: "Lato", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  /* Spacing scale */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
+  --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 80px;
+
+  /* Layout */
+  --container-max: 1472px;
+  --container-pad: 32px;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--govie-text);
+  background: var(--govie-surface-page);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; cursor: pointer; }
+a { color: var(--govie-link); }
+ul { list-style: none; margin: 0; padding: 0; }
+:focus-visible { outline: 3px solid var(--govie-border-focus); outline-offset: 2px; }
+
+/* ---------- Bilingual ---------- */
+[data-ga] { display: none; }
+html[lang="ga"] [data-en] { display: none; }
+html[lang="ga"] [data-ga] { display: inline; }
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--govie-border-focus); color: var(--govie-text);
+  padding: var(--s-3) var(--s-4); font-weight: 700; text-decoration: none;
+  z-index: 100;
+}
+.skip-link:focus { left: var(--s-4); top: var(--s-4); outline: 3px solid var(--govie-text); }
+
+/* ---------- Layout rail ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+/* ---------- Top utility bar ---------- */
+.top-bar {
+  background: var(--govie-primary-subtle);
+  color: var(--govie-text-inverse);
+  font-size: 16px;
+}
+.top-bar__inner {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--s-4);
+  min-height: 32px;
+  padding-top: 4px; padding-bottom: 4px;
+}
+.top-bar__link {
+  background: transparent; border: 0;
+  color: inherit; font: inherit;
+  padding: 4px 8px;
+  text-decoration: underline; text-underline-offset: 3px;
+  border-radius: 2px;
+}
+.top-bar__link:hover { background: rgba(255,255,255,0.08); }
+.top-bar__user {
+  padding: 4px 8px;
+  display: inline-flex; gap: var(--s-1); align-items: baseline;
+}
+.top-bar__user-link {
+  color: var(--govie-text-inverse);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.top-bar__user-link:hover { color: var(--govie-text-inverse); opacity: 0.85; }
+
+/* ---------- Main header ---------- */
+.app-header {
+  background: var(--govie-primary);
+  color: var(--govie-text-inverse);
+  padding: var(--s-4) 0;
+}
+.app-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  min-height: 48px;
+}
+.app-header__brand {
+  display: inline-flex; align-items: center;
+  color: var(--govie-text-inverse); text-decoration: none;
+}
+.app-header__brand:focus-visible {
+  outline: 3px solid var(--govie-border-focus);
+  outline-offset: 4px;
+}
+.app-header__logo { display: block; height: 48px; width: auto; }
+.app-header__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+}
+.app-header__menu {
+  margin-left: auto;
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  background: transparent; border: 0;
+  color: var(--govie-text-inverse);
+  padding: 8px 6px 8px 8px;
+  font-size: 18px; font-weight: 700; line-height: 24px;
+  border-radius: 2px;
+}
+.app-header__menu[disabled] { cursor: default; opacity: 1; }
+.app-header__menu-icon { width: 24px; height: 24px; }
+
+/* ---------- Main ---------- */
+.main {
+  padding: var(--s-6) 0 var(--s-7);
+  outline: none;
+}
+
+/* ---------- Page header ---------- */
+.page-header { padding: var(--s-5) 0; max-width: 704px; }
+.page-header__title {
+  margin: 0 0 var(--s-2);
+  font-size: 32px; font-weight: 700; line-height: 40px;
+  color: var(--govie-text);
+}
+.page-header__lead {
+  margin: 0;
+  font-size: 20px; line-height: 30px;
+  color: var(--govie-text);
+}
+
+/* ---------- Two-column dashboard grid ----------
+ * Desktop: 2 columns, 80px gap (matches Figma exactly).
+ * Tablet:  2 columns, smaller gap.
+ * Mobile:  single column, stacked. */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-9);
+  padding-top: var(--s-6);
+}
+@media (max-width: 1024px) {
+  .dashboard-grid { gap: var(--s-6); }
+}
+@media (max-width: 768px) {
+  .dashboard-grid { grid-template-columns: 1fr; gap: var(--s-7); }
+}
+
+/* ---------- Column ---------- */
+.dash-column {
+  display: flex; flex-direction: column;
+  gap: var(--s-6);
+  min-width: 0;
+}
+.dash-column__heading {
+  margin: 0;
+  font-size: 24px; font-weight: 700; line-height: 30px;
+  color: var(--govie-text);
+}
+
+/* ---------- List + Basic Card ----------
+ * Each card is its own list item with a title link + date,
+ * separated by a bottom border. Matches the Figma "Basic card"
+ * component. */
+.dash-list {
+  display: flex; flex-direction: column;
+  gap: var(--s-4);
+}
+.dash-card {
+  display: flex; flex-direction: column;
+  gap: var(--s-2);
+  padding-bottom: var(--s-4);
+  border-bottom: 1px solid var(--govie-border-card);
+}
+.dash-card__title {
+  color: var(--govie-link);
+  font-size: 18px; font-weight: 700; line-height: 27px;
+  text-decoration: underline; text-underline-offset: 3px;
+  word-break: break-word;
+}
+.dash-card__title:hover { color: var(--govie-link-hover); }
+.dash-card__date {
+  margin: 0;
+  color: var(--govie-text-muted);
+  font-size: 16px; line-height: 24px;
+}
+
+/* ---------- Button (primary) ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--s-2);
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 2px;
+  font: 700 18px/24px var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.12s, color 0.12s, box-shadow 0.12s;
+  align-self: flex-start;
+}
+.btn--primary {
+  background: var(--govie-primary);
+  color: var(--govie-text-inverse);
+}
+.btn--primary:hover { background: var(--govie-primary-hover); color: var(--govie-text-inverse); }
+.btn--primary:focus-visible {
+  outline: 3px solid var(--govie-border-focus);
+  outline-offset: 0;
+  box-shadow: inset 0 -2px 0 var(--govie-text);
+}
+
+/* ---------- Footer ----------
+ * Brand band (light) with right-aligned gov-black logo;
+ * utility band (slightly darker) with link row + copyright. */
+.app-footer { margin-top: var(--s-7); }
+.app-footer__brand-band {
+  background: var(--govie-surface-1);
+  padding: var(--s-7) 0;
+}
+.app-footer__brand-band-inner {
+  display: flex; justify-content: flex-end;
+}
+.app-footer__logo { display: block; height: 64px; width: auto; }
+
+.app-footer__utility-band {
+  background: var(--govie-surface-2);
+  padding: var(--s-4) 0;
+  border-bottom: 8px solid var(--govie-surface-2);
+}
+.app-footer__utility-band-inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: var(--s-3) var(--s-5);
+}
+.app-footer__links {
+  display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-5);
+}
+.app-footer__links a {
+  color: var(--govie-text);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.app-footer__copy {
+  margin: 0;
+  color: var(--govie-text);
+  font-size: 16px;
+}
+
+/* ---------- Responsive: header tweaks ---------- */
+@media (max-width: 768px) {
+  .app-header__inner { gap: var(--s-3); }
+  .app-header__title { font-size: 20px; }
+  .app-header__menu { padding-left: 4px; padding-right: 4px; }
+  .top-bar__inner { flex-wrap: wrap; justify-content: flex-end; }
+  .page-header__title { font-size: 28px; line-height: 36px; }
+  .page-header__lead { font-size: 18px; line-height: 28px; }
+  .app-footer__brand-band-inner { justify-content: flex-start; }
+  :root { --container-pad: 16px; }
+}

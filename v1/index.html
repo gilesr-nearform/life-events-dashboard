@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard — gov.ie</title>
+  <meta name="description" content="Life Events dashboard prototype v1 — basic build, application + relevant messages." />
+  <meta name="theme-color" content="#004d44" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">
+    <span data-en>Skip to main content</span><span data-ga>Léim go príomhábhar</span>
+  </a>
+
+  <!-- Top utility bar: language + user / logout -->
+  <div class="top-bar">
+    <div class="container top-bar__inner">
+      <button type="button" class="top-bar__link" data-lang-toggle aria-pressed="false">
+        <span data-en>Gaeilge</span><span data-ga>English</span>
+      </button>
+      <span class="top-bar__user">
+        <span data-en>Hi, David Brennan</span><span data-ga>Dia duit, David Brennan</span>
+        <a href="#" class="top-bar__user-link">
+          (<span data-en>Logout</span><span data-ga>Logáil amach</span>)
+        </a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Main header: brand + service title + menu -->
+  <header class="app-header" role="banner">
+    <div class="container app-header__inner">
+      <a href="#" class="app-header__brand" aria-label="Rialtas na hÉireann, Government of Ireland">
+        <img src="assets/logos/gov-white.svg" alt="" width="181" height="64" class="app-header__logo" />
+      </a>
+      <span class="app-header__title">
+        <span data-en>Dashboard</span><span data-ga>Deais</span>
+      </span>
+      <!-- Visual-only menu button. No drawer wired in v1 (basic build). -->
+      <button type="button" class="app-header__menu" aria-label="Menu" disabled>
+        <span data-en>Menu</span><span data-ga>Roghchlár</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="app-header__menu-icon">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="main" tabindex="-1">
+    <div class="container">
+
+      <!-- Welcome / page header -->
+      <section class="page-header" aria-labelledby="welcome-title">
+        <h1 id="welcome-title" class="page-header__title">
+          <span data-en>Welcome, David</span><span data-ga>Fáilte, David</span>
+        </h1>
+        <p class="page-header__lead">
+          <span data-en>Manage your government services and applications in one place.</span>
+          <span data-ga>Bainistigh do sheirbhísí rialtais agus iarratais in aon áit amháin.</span>
+        </p>
+      </section>
+
+      <!-- Two-column: applications | messages -->
+      <section class="dashboard-grid" aria-label="Your applications and messages">
+
+        <!-- Applications column -->
+        <article class="dash-column" aria-labelledby="apps-heading">
+          <h2 id="apps-heading" class="dash-column__heading">
+            <span data-en>Your applications</span><span data-ga>D'iarratais</span>
+          </h2>
+          <ul class="dash-list" role="list">
+            <li class="dash-card">
+              <a href="#" class="dash-card__title">
+                Apply for social housing support
+              </a>
+              <p class="dash-card__date">
+                <time datetime="2026-03-19">19 Mar 2026</time>
+              </p>
+            </li>
+          </ul>
+          <a href="#" class="btn btn--primary">
+            <span data-en>View all applications</span><span data-ga>Féach gach iarratas</span>
+          </a>
+        </article>
+
+        <!-- Messages column -->
+        <article class="dash-column" aria-labelledby="msgs-heading">
+          <h2 id="msgs-heading" class="dash-column__heading">
+            <span data-en>Your messages</span><span data-ga>Do theachtaireachtaí</span>
+          </h2>
+          <ul class="dash-list" role="list">
+            <li class="dash-card">
+              <a href="#" class="dash-card__title">
+                Social housing application decision
+              </a>
+              <p class="dash-card__date">
+                <time datetime="2026-05-01">01 May 2026</time>
+              </p>
+            </li>
+            <li class="dash-card">
+              <a href="#" class="dash-card__title">
+                Social housing application received — REF: DCC-2026-084721
+              </a>
+              <p class="dash-card__date">
+                <time datetime="2026-03-19">19 Mar 2026</time>
+              </p>
+            </li>
+          </ul>
+          <a href="#" class="btn btn--primary">
+            <span data-en>View all messages</span><span data-ga>Féach gach teachtaireacht</span>
+          </a>
+        </article>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer: brand band + utility band -->
+  <footer class="app-footer" role="contentinfo">
+    <div class="app-footer__brand-band">
+      <div class="container app-footer__brand-band-inner">
+        <img src="assets/logos/gov-black.svg" alt="Rialtas na hÉireann, Government of Ireland" width="181" height="64" class="app-footer__logo" />
+      </div>
+    </div>
+    <div class="app-footer__utility-band">
+      <div class="container app-footer__utility-band-inner">
+        <ul class="app-footer__links" role="list">
+          <li><a href="#privacy"><span data-en>Privacy policy</span><span data-ga>Polasaí príobháideachais</span></a></li>
+          <li><a href="#cookies"><span data-en>Cookies</span><span data-ga>Fianáin</span></a></li>
+          <li><a href="#accessibility"><span data-en>Accessibility</span><span data-ga>Inrochtaineacht</span></a></li>
+          <li><a href="#terms"><span data-en>Terms of use</span><span data-ga>Téarmaí úsáide</span></a></li>
+        </ul>
+        <p class="app-footer__copy">
+          <span data-en>© Government of Ireland 2026</span>
+          <span data-ga>© Rialtas na hÉireann 2026</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
