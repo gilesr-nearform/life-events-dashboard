@@ -150,8 +150,6 @@ html[lang="ga"] [data-ga] { display: inline; }
 .apps__head {
   display: flex; align-items: baseline; justify-content: space-between;
   gap: var(--s-4);
-  padding-bottom: var(--s-4);
-  border-bottom: 1px solid var(--govie-border-card);
   margin-bottom: var(--s-5);
 }
 .apps__heading { margin: 0; font-size: 24px; font-weight: 700; line-height: 30px; color: var(--govie-text); }
