@@ -245,10 +245,22 @@ html[lang="ga"] [data-ga] { display: inline; }
   font-size: 16px; font-weight: 700; line-height: 24px;
   text-decoration: underline; text-underline-offset: 3px;
   padding: 4px 0;
+  /* Button reset so <button.link-arrow> looks identical to <a.link-arrow> */
+  background: transparent;
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
 }
 .link-arrow:hover { color: var(--govie-link-hover); }
-.link-arrow svg { width: 16px; height: 16px; transition: transform 0.12s; }
+.link-arrow svg { width: 16px; height: 16px; transition: transform 0.2s; }
 .link-arrow:hover svg { transform: translateX(2px); }
+
+/* When the link-arrow is a thread-expand button it carries a chevron
+ * instead of an arrow; suppress the arrow translate-on-hover and
+ * rotate the chevron on expand instead. */
+.link-arrow[data-expand-thread]:hover .link-arrow__chev { transform: none; }
+.link-arrow[aria-expanded="true"] .link-arrow__chev { transform: rotate(180deg); }
+.link-arrow[aria-expanded="true"]:hover .link-arrow__chev { transform: rotate(180deg); }
 
 /* ---------- Reveal more applications ---------- */
 .apps__reveal {

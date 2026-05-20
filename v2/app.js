@@ -29,4 +29,22 @@
       if (labelSlot) labelSlot.innerHTML = expanded ? showLabel : hideLabel;
     });
   }
+
+  /* Per-card thread expansion: each "View all N messages" button toggles
+   * the messages flagged with [data-msg-hidden] inside its own card. */
+  const FEWER_LABEL = `<span data-en>Show fewer messages</span><span data-ga>Taispeáin níos lú teachtaireachtaí</span>`;
+  document.querySelectorAll('[data-expand-thread]').forEach(btn => {
+    const slot = btn.querySelector('[data-label]');
+    const moreLabel = slot?.innerHTML;
+    const card = btn.closest('.app-card');
+    const hiddenMsgs = card ? Array.from(card.querySelectorAll('[data-msg-hidden]')) : [];
+    if (!hiddenMsgs.length) return;
+
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      hiddenMsgs.forEach(el => { el.hidden = expanded; });
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if (slot) slot.innerHTML = expanded ? moreLabel : FEWER_LABEL;
+    });
+  });
 })();
