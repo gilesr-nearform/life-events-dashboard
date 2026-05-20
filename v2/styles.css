@@ -218,11 +218,12 @@ html[lang="ga"] [data-ga] { display: inline; }
 .msg:hover { background: var(--govie-surface-2); }
 .msg__title {
   color: var(--govie-link);
-  font-size: 16px; font-weight: 700; line-height: 24px;
+  font-size: 16px; font-weight: 400; line-height: 24px;
   text-decoration: underline; text-underline-offset: 3px;
   word-break: break-word;
 }
 .msg__title:hover { color: var(--govie-link-hover); }
+.msg--unread .msg__title { font-weight: 700; }
 .msg__date {
   margin: 0;
   color: var(--govie-text-muted);
@@ -232,16 +233,18 @@ html[lang="ga"] [data-ga] { display: inline; }
   display: inline-flex; align-items: center; gap: var(--s-2);
 }
 
-/* Unread indicator: small solid dot in the row's left padding gutter. */
+/* Unread indicator: small solid dot in the row's left padding gutter.
+ * Same colour as the link, with extra breathing room between the dot
+ * and the link text. */
 .msg--unread::before {
   content: "";
   position: absolute;
-  left: 10px;
+  left: 9px;
   top: 50%;
   transform: translateY(-50%);
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: var(--govie-primary);
+  background: var(--govie-link);
 }
 
 /* Attachment glyph (paperclip): inline left of the date. Muted by
@@ -289,6 +292,32 @@ html[lang="ga"] [data-ga] { display: inline; }
   margin-top: var(--s-5);
   display: flex; justify-content: center;
 }
+
+/* ---------- Empty state (used when there are no applications) ---------- */
+.empty-state {
+  padding: var(--s-6) var(--s-5);
+  background: var(--govie-surface-1);
+  border: 1px solid var(--govie-border-card);
+  border-radius: 4px;
+}
+.empty-state__title {
+  margin: 0 0 var(--s-2);
+  font-size: 20px; font-weight: 700; line-height: 28px;
+  color: var(--govie-text);
+}
+.empty-state__body {
+  margin: 0 0 var(--s-4);
+  color: var(--govie-text-muted);
+  font-size: 16px; line-height: 24px;
+  max-width: 60ch;
+}
+.empty-state__body:last-child { margin-bottom: 0; }
+.empty-state__cta { align-self: flex-start; }
+
+/* When messages appear at the page level (no parent application), the bounded
+ * card still uses the same chrome — just without a header / meta block. */
+.apps--messages { margin-top: var(--s-6); }
+.app-card--standalone .msgs { border-top: 0; }
 
 /* ---------- Buttons ---------- */
 .btn {

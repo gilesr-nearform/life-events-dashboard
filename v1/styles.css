@@ -223,6 +223,24 @@ html[lang="ga"] [data-ga] { display: inline; }
   font-size: 16px; line-height: 24px;
 }
 
+/* ---------- Empty state (used when applications list is empty) ---------- */
+.empty-state {
+  padding: var(--s-5);
+  background: var(--govie-surface-1);
+  border: 1px solid var(--govie-border-card);
+  border-radius: 4px;
+}
+.empty-state__title {
+  margin: 0 0 var(--s-2);
+  font-size: 18px; font-weight: 700; line-height: 27px;
+  color: var(--govie-text);
+}
+.empty-state__body {
+  margin: 0;
+  color: var(--govie-text-muted);
+  font-size: 16px; line-height: 24px;
+}
+
 /* ---------- Button (primary) ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
