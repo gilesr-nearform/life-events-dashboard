@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My dashboard — gov.ie</title>
+  <meta name="description" content="OGCIO Life Events dashboard prototype. Conversation-first: every government message lives inside the application it relates to." />
+  <meta name="theme-color" content="#004F3C" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <div id="live-region" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Top utility strip: language + sign out -->
+  <div class="utility">
+    <div class="container utility__inner">
+      <button type="button" class="utility__btn" data-lang-toggle aria-pressed="false">
+        <span data-en>Gaeilge</span><span data-ga>English</span>
+      </button>
+      <a href="#" class="utility__btn">
+        <span data-en>Sign out</span><span data-ga>Logáil amach</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- gov.ie header -->
+  <header class="masthead" role="banner">
+    <div class="container masthead__inner">
+      <a href="#" class="masthead__brand" aria-label="Rialtas na hÉireann, Government of Ireland">
+        <img class="masthead__logo" src="assets/logos/gov-white.svg" alt="" width="181" height="64" />
+      </a>
+
+      <div class="masthead__service">
+        <span class="masthead__service-name" data-en>My dashboard</span>
+        <span class="masthead__service-name" data-ga>Mo dheais</span>
+      </div>
+
+      <nav class="masthead__nav" aria-label="Account">
+        <a href="#conversations" class="badge-link" data-jump-conversations>
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="badge-link__icon">
+            <path d="M3 5h18v10H7l-4 4V5Z M7 9h10 M7 13h7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span data-en>Messages</span><span data-ga>Teachtaireachtaí</span>
+          <span class="badge-link__count" data-unread-total>0</span>
+        </a>
+        <span class="who">
+          <span class="who__avatar" aria-hidden="true">NB</span>
+          <span class="who__name">Niamh Ní Bhriain</span>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container main" tabindex="-1">
+
+    <!-- Greeting & verified-by ribbon -->
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title" class="hero__title">
+        <span data-en>Dia duit, Niamh</span><span data-ga>Dia duit, Niamh</span>
+      </h1>
+      <p class="hero__lead">
+        <span data-en>Here's where you are with government. Pre-filled from your verified profile — under the Once Only principle, we never ask you twice.</span>
+        <span data-ga>Seo an áit a bhfuil tú leis an rialtas. Réamhlíonta ó do phróifíl dheimhnithe.</span>
+      </p>
+      <ul class="provenance" role="list">
+        <li class="chip chip--ok">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-en>Verified by MyGovID</span><span data-ga>Deimhnithe ag MyGovID</span>
+        </li>
+        <li class="chip chip--neutral">
+          <span data-en>Profile last refreshed 8 May 2026</span><span data-ga>Athnuaite 8 Bealtaine 2026</span>
+        </li>
+        <li class="chip chip--neutral">
+          <span data-en>2 departments holding your data</span><span data-ga>2 roinn ag coinneáil sonraí</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Conversations — the centerpiece. Replaces a flat 'submissions' inbox.
+         Every government message is anchored to the application it relates to;
+         multiple departments can speak in the same thread. -->
+    <section id="conversations" class="block" aria-labelledby="conversations-title" tabindex="-1">
+      <header class="block__head">
+        <div>
+          <p class="eyebrow"><span data-en>Building Block 7 · My Dashboard</span><span data-ga>Bloc Tógála 7</span></p>
+          <h2 id="conversations-title" class="block__title">
+            <span data-en>Your applications &amp; conversations</span>
+            <span data-ga>Iarratais agus comhráite</span>
+          </h2>
+          <p class="block__lead">
+            <span data-en>Every message from a department or system stays anchored to the application it's about. One application, one thread — even when multiple departments are involved.</span>
+            <span data-ga>Fanann gach teachtaireacht san iarratas a bhaineann léi.</span>
+          </p>
+        </div>
+      </header>
+
+      <div class="filterbar" role="tablist" aria-label="Filter conversations" data-filterbar>
+        <!-- Buttons rendered from JS so counts stay in sync with state -->
+      </div>
+
+      <ol class="threads" id="thread-list" data-thread-list aria-live="polite">
+        <!-- Populated by app.js. -->
+      </ol>
+
+      <p class="threads__empty" data-threads-empty hidden>
+        <span data-en>Nothing matches that filter.</span><span data-ga>Tada le taispeáint.</span>
+      </p>
+    </section>
+
+    <!-- Active life events / journeys -->
+    <section class="block" aria-labelledby="journeys-title">
+      <header class="block__head">
+        <div>
+          <p class="eyebrow"><span data-en>Life events</span><span data-ga>Imeachtaí saoil</span></p>
+          <h2 id="journeys-title" class="block__title">
+            <span data-en>Active journeys</span><span data-ga>Turais ghníomhacha</span>
+          </h2>
+        </div>
+      </header>
+
+      <div class="journeys">
+        <article class="journey journey--active">
+          <div class="journey__head">
+            <h3 class="journey__title">Becoming a Parent</h3>
+            <span class="status status--active">
+              <span data-en>In progress</span><span data-ga>Ar siúl</span>
+            </span>
+          </div>
+          <p class="journey__meta">
+            <span data-en>Phase 3 of 6 · 3 phases complete</span>
+            <span data-ga>Céim 3 as 6</span>
+          </p>
+          <ol class="spine" role="list" aria-label="Journey progress">
+            <li class="spine__step spine__step--done"><span class="spine__dot"></span><span class="spine__label">Pregnancy registered</span></li>
+            <li class="spine__step spine__step--done"><span class="spine__dot"></span><span class="spine__label">Maternity benefit applied</span></li>
+            <li class="spine__step spine__step--current" aria-current="step"><span class="spine__dot"></span><span class="spine__label">Birth registration</span></li>
+            <li class="spine__step"><span class="spine__dot"></span><span class="spine__label">Caring for the child</span></li>
+            <li class="spine__step"><span class="spine__dot"></span><span class="spine__label">Childcare and supports</span></li>
+            <li class="spine__step"><span class="spine__dot"></span><span class="spine__label">Returning to work</span></li>
+          </ol>
+          <div class="journey__actions">
+            <a href="#" class="btn btn--primary">
+              <span data-en>Open journey</span><span data-ga>Oscail an turas</span>
+            </a>
+            <a href="#" class="btn btn--ghost">
+              <span data-en>What's next</span><span data-ga>Cad atá ag teacht</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="journey">
+          <div class="journey__head">
+            <h3 class="journey__title">Starting school</h3>
+            <span class="status status--scheduled">
+              <span data-en>Scheduled</span><span data-ga>Sceidealta</span>
+            </span>
+          </div>
+          <p class="journey__meta">
+            <span data-en>Available from August 2027 · we'll surface this when Saoirse turns 3.</span>
+            <span data-ga>Ar fáil ó Lúnasa 2027.</span>
+          </p>
+          <p class="journey__body">
+            <span data-en>Nothing to do now. We'll let you know when registration opens.</span>
+            <span data-ga>Tada le déanamh anois.</span>
+          </p>
+          <a href="#" class="link">
+            <span data-en>Learn what's involved</span><span data-ga>Faigh tuilleadh eolais</span>
+          </a>
+        </article>
+
+        <article class="journey journey--roadmap">
+          <div class="journey__head">
+            <h3 class="journey__title">
+              <span data-en>17 priority life events</span>
+              <span data-ga>17 imeacht saoil</span>
+            </h3>
+            <span class="status status--neutral">DPS Plan 2030</span>
+          </div>
+          <p class="journey__body">
+            <span data-en>Bereavement, retirement, moving home and 14 more — phasing in to 2030.</span>
+            <span data-ga>Bás, scor, bogadh tí agus a thuilleadh.</span>
+          </p>
+          <a href="#" class="link">
+            <span data-en>See the full roadmap</span><span data-ga>Féach an treochlár</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Entitlements you may have, derived from data government already holds -->
+    <section class="block" aria-labelledby="entitlements-title">
+      <header class="block__head">
+        <div>
+          <p class="eyebrow"><span data-en>From data we already hold</span><span data-ga>Ó shonraí atá againn</span></p>
+          <h2 id="entitlements-title" class="block__title">
+            <span data-en>You may be entitled to</span><span data-ga>Seans go bhfuil tú i dteideal</span>
+          </h2>
+        </div>
+      </header>
+
+      <ul class="entitlements" role="list">
+        <li class="entitlement">
+          <h3 class="entitlement__title">Child Benefit</h3>
+          <p class="entitlement__amount">€140 <span class="entitlement__period">/ month</span></p>
+          <p class="entitlement__body">
+            <span data-en>Eligible from the day you register Saoirse's birth.</span>
+            <span data-ga>Incháilithe ó lá clárúcháin.</span>
+          </p>
+          <a href="#" class="link">
+            <span data-en>Check eligibility</span><span data-ga>Seiceáil incháilitheacht</span>
+          </a>
+        </li>
+        <li class="entitlement">
+          <h3 class="entitlement__title">Free GP visit card (under 8s)</h3>
+          <p class="entitlement__amount">€0</p>
+          <p class="entitlement__body">
+            <span data-en>Eligible from registration. Auto-issued where possible.</span>
+            <span data-ga>Eisithe go huathoibríoch nuair is féidir.</span>
+          </p>
+          <a href="#" class="link">
+            <span data-en>Apply</span><span data-ga>Iarratas</span>
+          </a>
+        </li>
+        <li class="entitlement">
+          <h3 class="entitlement__title">Parent's Leave top-up</h3>
+          <p class="entitlement__amount">9 <span class="entitlement__period">weeks per parent</span></p>
+          <p class="entitlement__body">
+            <span data-en>Coordinate with your employer through Revenue.</span>
+            <span data-ga>Comhordaigh le d'fhostóir.</span>
+          </p>
+          <a href="#" class="link">
+            <span data-en>Read guidance</span><span data-ga>Léigh treoir</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__col footer__col--main">
+        <ul class="footer__links" role="list">
+          <li>
+            <a href="#privacy" data-en>Privacy</a>
+            <a href="#privacy" data-ga>Príobháideacht</a>
+          </li>
+          <li>
+            <a href="#accessibility" data-en>Accessibility</a>
+            <a href="#accessibility" data-ga>Inrochtaineacht</a>
+          </li>
+          <li>
+            <a href="#terms" data-en>Terms of use</a>
+            <a href="#terms" data-ga>Téarmaí úsáide</a>
+          </li>
+          <li>
+            <a href="#cookies" data-en>Cookies</a>
+            <a href="#cookies" data-ga>Fianáin</a>
+          </li>
+          <li>
+            <a href="https://www.gov.ie" data-en>gov.ie</a>
+            <a href="https://www.gov.ie" data-ga>gov.ie</a>
+          </li>
+        </ul>
+        <p class="footer__legal">
+          <span data-en>© Government of Ireland 2026 · Pre-alpha prototype</span>
+          <span data-ga>© Rialtas na hÉireann 2026 · Réamh-leagan</span>
+        </p>
+      </div>
+      <div class="footer__col footer__col--brand">
+        <img class="footer__logo" src="assets/logos/gov-black.svg" alt="Rialtas na hÉireann, Government of Ireland" width="181" height="64" />
+      </div>
+    </div>
+  </footer>
+
+  <!-- Reply dialog template (cloned by JS) -->
+  <template id="reply-form-template">
+    <form class="reply" data-reply-form novalidate>
+      <label class="reply__label" for="reply-input">
+        <span data-en>Your reply</span><span data-ga>Do fhreagra</span>
+      </label>
+      <textarea id="reply-input" class="reply__input" name="body" rows="3" required
+                placeholder="Type your reply…"></textarea>
+      <p class="reply__meta">
+        <span data-en>Goes to the same team that wrote to you. Encrypted in transit; archived to your record.</span>
+        <span data-ga>Téann sé chuig an bhfoireann chéanna.</span>
+      </p>
+      <div class="reply__actions">
+        <button type="submit" class="btn btn--primary">
+          <span data-en>Send reply</span><span data-ga>Seol freagra</span>
+        </button>
+        <button type="button" class="btn btn--ghost" data-reply-cancel>
+          <span data-en>Cancel</span><span data-ga>Cealaigh</span>
+        </button>
+      </div>
+    </form>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
