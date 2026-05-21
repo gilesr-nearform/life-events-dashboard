@@ -1,11 +1,22 @@
 # Life Events Dashboard
 
+> **Live preview:** <https://gilesr-nearform.github.io/life-events-dashboard/>
+> No login. Open the picker, then pick a version to view.
+
 Pre-alpha prototype of the OGCIO Life Events dashboard (Building Block 7).
 Each iteration lives in its own folder so we can ship, demo, and compare
 versions without losing history.
 
-Repo: <https://github.com/gilesr-nearform/life-events-dashboard>
-Live: <https://gilesr-nearform.github.io/life-events-dashboard/>
+## For Nearform reviewers
+
+The site above is public &mdash; the URL is all anyone needs. No GitHub
+account, login, or VPN required.
+
+* **Just look** &mdash; click any version on the picker.
+* **Leave async feedback** &mdash; open an [issue](https://github.com/gilesr-nearform/life-events-dashboard/issues/new)
+  on this repo (a GitHub account is needed for that, but not for viewing).
+* **Share** &mdash; the URL stays stable; future versions appear at
+  `/v3/`, `/v4/`, etc. without breaking older links.
 
 ## Versions
 

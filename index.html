@@ -51,7 +51,15 @@
       max-width:680px; margin:0 0 40px;
     }
     .lede h2{ margin:0 0 8px; font-size:32px; line-height:40px; font-weight:700; }
-    .lede p{ margin:0; font-size:18px; line-height:28px; color:var(--text-muted); }
+    .lede p{ margin:0 0 12px; font-size:18px; line-height:28px; color:var(--text-muted); }
+    .lede p:last-child{ margin-bottom:0; }
+    .lede__share{ font-size:15px; }
+    .lede__share code{
+      background: var(--surface-1); padding: 2px 6px; border-radius: 2px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:14px;
+      color: var(--text);
+    }
+    .lede__share a{ color: var(--link); }
 
     .versions{ display:grid; gap:24px; }
     @media (min-width: 720px){
@@ -142,7 +150,8 @@
     <div class="container">
       <div class="lede">
         <h2>Iterations</h2>
-        <p>Each version is a complete, browsable prototype at its own URL. Newer versions add features on top; older ones stay live so we can compare and demo side-by-side.</p>
+        <p>This is a pre-alpha prototype of the OGCIO Life Events citizen dashboard. Each version is a complete, browsable prototype at its own URL &mdash; newer ones add features on top, older ones stay live so we can demo and compare side by side.</p>
+        <p class="lede__share">Share this page: <code>gilesr-nearform.github.io/life-events-dashboard</code> &middot; <a href="https://github.com/gilesr-nearform/life-events-dashboard">source on GitHub</a> &middot; <a href="https://github.com/gilesr-nearform/life-events-dashboard/issues/new">leave feedback</a></p>
       </div>
 
       <div class="versions">
